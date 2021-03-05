@@ -25,4 +25,14 @@ export class StudentService {
   async deleteStudent(id:string):Promise<void>{
          const student = await this.studentRepository.delete(id)
     }
+   async updateStudent(id:string,studentDto: StudentDTO):Promise<Student>{
+         const studentData = await this.getStudentById(id)
+         const { name, email, password } = studentDto;
+         studentData.name = name;
+         studentData.email = email;
+         studentData.password = password;
+         await studentData.save()
+         
+         return studentData;
+    }
 }

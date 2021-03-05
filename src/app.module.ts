@@ -4,6 +4,8 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { StudentModule } from './student/student.module';
+import { AuthModule } from './auth/auth.module';
+import { AdminModule } from './admin/admin.module';
 
 @Module({
   imports: [
@@ -18,7 +20,9 @@ import { StudentModule } from './student/student.module';
        useUnifiedTopology:true,
        entities:[join(__dirname,'**/**.entity.ts')]
     }),
-    StudentModule
+    StudentModule,
+    AuthModule,
+    AdminModule,
   ],
   controllers: [AppController],
   providers: [AppService],
